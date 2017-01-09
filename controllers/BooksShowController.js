@@ -11,15 +11,18 @@ function BooksShowController($routeParams, $location, $http) {
   var bookId = $routeParams.id;
   var api = 'https://super-crud.herokuapp.com/books/'
 
-  $http({
-    method: 'GET',
-    url: api + bookId
-  }).then(function successCallback(response) {
-    vm.book = response.data;
-  }, function errorCallback(response) {
-    console.log('There was an error getting the data', response);
-    $location.path('/');
-  });
+  vm.getData = function(){
+    $http({
+      method: 'GET',
+      url: api + bookId
+    }).then(function successCallback(response) {
+      vm.book = response.data;
+    }, function errorCallback(response) {
+      console.log('There was an error getting the data', response);
+      $location.path('/');
+    });
+  }
+  vm.getData();
 
   vm.updateBook = function(book){
     $http({
@@ -33,6 +36,7 @@ function BooksShowController($routeParams, $location, $http) {
       }
     }).then(function successCallback(updatedBookJson) {
       vm.book = updatedBookJson.data;
+      // $location.path('/');
     }, function errorCallback(response) {
       console.log('There was an error deleting the data', response);
     });

@@ -16,7 +16,7 @@
 		<!-- edit form -->
 		<div ng-show="editForm">
 			<br>
-	    <form ng-show="editForm" ng-submit="booksShowCtrl.updateBook(booksShowCtrl.book)">
+	    <form ng-show="editForm">
 	      <div class="form-group">
 	        <input type="text" ng-model="booksShowCtrl.book.title" class="form-control" placeholder="Title">
 	      </div>
@@ -29,7 +29,8 @@
 	      <div class="form-group">
 	        <input type="text" ng-model="booksShowCtrl.book.releaseDate" class="form-control" placeholder="Release Date">
 	      </div>
-	      <button type="submit" class="btn btn-default" ng-click="editForm=!editForm">Update Book</button>
+	      <button type="submit" class="btn btn-default" ng-click="booksShowCtrl.updateBook(booksShowCtrl.book); editForm=!editForm">Update Book</button>
+        <button ng-click="booksShowCtrl.reload(); editForm=!editForm" class="btn btn-default">Cancel Edit <span class="glyphicon glyphicon-trash"></span></button>
 	    </form>
 		</div>
 	</div>
