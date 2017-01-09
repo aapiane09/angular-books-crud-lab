@@ -36,7 +36,7 @@ function BooksShowController($routeParams, $location, $http) {
       }
     }).then(function successCallback(updatedBookJson) {
       vm.book = updatedBookJson.data;
-      // $location.path('/');
+      $location.path('/');
     }, function errorCallback(response) {
       console.log('There was an error deleting the data', response);
     });
